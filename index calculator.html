@@ -1,0 +1,967 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculator</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top left, #3c4268, transparent 40%),
+        radial-gradient(circle at bottom right, #632e52, transparent 40%),
+        #101114;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator {
+
+    width: 350px;
+
+    padding: 20px;
+
+    border-radius: 28px;
+
+    background: rgba(25, 26, 32, .92);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6),
+        inset 0 1px 1px rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+.display {
+
+    height: 125px;
+
+    padding: 20px;
+
+    margin-bottom: 18px;
+
+    border-radius: 20px;
+
+    background: #0b0c0f;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    overflow: hidden;
+}
+
+#expression {
+
+    color: #777;
+
+    font-size: 18px;
+
+    min-height: 25px;
+}
+
+#result {
+
+    color: white;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    max-width: 100%;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 11px;
+}
+
+
+button {
+
+    height: 62px;
+
+    border: none;
+
+    border-radius: 17px;
+
+    background: #292b31;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 0 #17181c;
+
+    transition:
+        .12s ease;
+}
+
+
+button:hover {
+
+    background: #373941;
+
+    transform:
+        translateY(-2px);
+}
+
+
+button:active {
+
+    transform:
+        translateY(4px);
+
+    box-shadow:
+        0 1px 0 #17181c;
+}
+
+
+/* Operators */
+
+.operator {
+
+    background: #394a68;
+}
+
+.operator:hover {
+
+    background: #4b6084;
+}
+
+
+/* Clear */
+
+.clear {
+
+    background: #713c43;
+}
+
+.clear:hover {
+
+    background: #8d4a53;
+}
+
+
+/* Equals */
+
+.equals {
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f8cff,
+            #795cf6
+        );
+}
+
+.equals:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #659aff,
+            #8c70ff
+        );
+}
+
+
+.zero {
+
+    grid-column:
+        span 2;
+}
+
+
+/* =========================
+   MISS KONA POPUP
+========================= */
+
+.popup {
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    width: 330px;
+
+    padding: 30px 20px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(30, 15, 25, .96);
+
+    border:
+        1px solid rgba(255,100,150,.4);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.8),
+        0 0 40px rgba(255,70,130,.25);
+
+    text-align: center;
+
+    z-index: 100;
+
+    opacity: 0;
+
+    transition:
+        .35s cubic-bezier(.17,.89,.32,1.28);
+}
+
+
+.popup.show {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+.popup h1 {
+
+    color: #ff729d;
+
+    font-size: 36px;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 0 20px rgba(255,80,130,.5);
+}
+
+
+.popup p {
+
+    color: #ccc;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   STICKERS
+========================= */
+
+.sticker {
+
+    position: fixed;
+
+    font-size: 40px;
+
+    z-index: 120;
+
+    pointer-events: none;
+
+    animation:
+        stickerPop
+        1.8s
+        ease-out
+        forwards;
+}
+
+
+@keyframes stickerPop {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.2)
+            rotate(0deg);
+    }
+
+    20% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.3)
+            rotate(
+                var(--rotation)
+            );
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(
+                var(--rotation)
+            );
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(.7)
+            translate(
+                var(--x),
+                calc(var(--y) - 100px)
+            )
+            rotate(
+                var(--rotation)
+            );
+    }
+}
+
+
+/* =========================
+   HEARTBEAT
+========================= */
+
+.heart-big {
+
+    font-size: 60px;
+
+    animation:
+        heartbeat
+        .8s
+        infinite;
+}
+
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================
+   DARK OVERLAY
+========================= */
+
+.overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.55);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 90;
+
+    transition: .3s;
+}
+
+
+.overlay.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NORMAL CALCULATOR -->
+
+<div class="calculator">
+
+    <div class="display">
+
+        <div id="expression"></div>
+
+        <div id="result">0</div>
+
+    </div>
+
+
+    <div class="buttons">
+
+
+        <button
+            class="clear"
+            onclick="clearCalc()">
+            AC
+        </button>
+
+
+        <button
+            onclick="deleteLast()">
+            DEL
+        </button>
+
+
+        <button
+            class="operator"
+            onclick="press('%')">
+            %
+        </button>
+
+
+        <button
+            class="operator"
+            onclick="press('/')">
+            ÷
+        </button>
+
+
+        <button
+            onclick="press('7')">
+            7
+        </button>
+
+        <button
+            onclick="press('8')">
+            8
+        </button>
+
+        <button
+            onclick="press('9')">
+            9
+        </button>
+
+        <button
+            class="operator"
+            onclick="press('*')">
+            ×
+        </button>
+
+
+        <button
+            onclick="press('4')">
+            4
+        </button>
+
+        <button
+            onclick="press('5')">
+            5
+        </button>
+
+        <button
+            onclick="press('6')">
+            6
+        </button>
+
+        <button
+            class="operator"
+            onclick="press('-')">
+            −
+        </button>
+
+
+        <button
+            onclick="press('1')">
+            1
+        </button>
+
+        <button
+            onclick="press('2')">
+            2
+        </button>
+
+        <button
+            onclick="press('3')">
+            3
+        </button>
+
+        <button
+            class="operator"
+            onclick="press('+')">
+            +
+        </button>
+
+
+        <button
+            class="zero"
+            onclick="press('0')">
+            0
+        </button>
+
+        <button
+            onclick="press('.')">
+            .
+        </button>
+
+        <button
+            class="equals"
+            onclick="calculate()">
+            =
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div
+    class="overlay"
+    id="overlay">
+</div>
+
+
+<div
+    class="popup"
+    id="popup">
+
+    <div class="heart-big">
+        💔
+    </div>
+
+    <h1>
+        MISS KONA SIYA
+    </h1>
+
+    <p>
+        Sometimes the answer hurts 😭
+    </p>
+
+</div>
+
+
+<!-- YOUR MUSIC -->
+
+<audio
+    id="music"
+    src="crash.mp3"
+    preload="auto">
+</audio>
+
+
+<script>
+
+let expression = "";
+
+let justCalculated = false;
+
+
+const result =
+    document.getElementById(
+        "result"
+    );
+
+const expressionDisplay =
+    document.getElementById(
+        "expression"
+    );
+
+const popup =
+    document.getElementById(
+        "popup"
+    );
+
+const overlay =
+    document.getElementById(
+        "overlay"
+    );
+
+const music =
+    document.getElementById(
+        "music"
+    );
+
+
+/* =========================
+   PRESS NUMBER
+========================= */
+
+function press(value) {
+
+    if (justCalculated) {
+
+        expression = "";
+
+        justCalculated = false;
+    }
+
+    expression += value;
+
+    expressionDisplay.textContent =
+        expression;
+
+    result.textContent =
+        expression;
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearCalc() {
+
+    expression = "";
+
+    justCalculated = false;
+
+    expressionDisplay.textContent =
+        "";
+
+    result.textContent =
+        "0";
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+function deleteLast() {
+
+    expression =
+        expression.slice(0, -1);
+
+    expressionDisplay.textContent =
+        expression;
+
+    result.textContent =
+        expression || "0";
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+function calculate() {
+
+    if (!expression)
+        return;
+
+
+    let answer;
+
+    try {
+
+        /*
+            This calculates normally
+            first.
+        */
+
+        answer =
+            Function(
+                "return " +
+                expression
+            )();
+
+    }
+
+    catch {
+
+        answer =
+            "Error";
+    }
+
+
+    /* SHOW NORMAL ANSWER FIRST */
+
+    expressionDisplay.textContent =
+        expression + " =";
+
+    result.textContent =
+        answer;
+
+    justCalculated = true;
+
+
+    /*
+        Wait a moment...
+
+        THEN MISS KONA SIYA POPS UP.
+    */
+
+    setTimeout(
+        showMissKona,
+        700
+    );
+}
+
+
+/* =========================
+   SHOW MISS KONA
+========================= */
+
+function showMissKona() {
+
+    popup.classList.add(
+        "show"
+    );
+
+    overlay.classList.add(
+        "show"
+    );
+
+
+    /* PLAY MUSIC */
+
+    music.currentTime = 0;
+
+    music.play().catch(() => {
+
+        console.log(
+            "Make sure crash.mp3 is in the same folder."
+        );
+
+    });
+
+
+    /* CREATE STICKERS */
+
+    createSticker("💔");
+
+    createSticker("😭");
+
+    createSticker("🥀");
+
+    createSticker("💔");
+
+    createSticker("😭");
+
+    createSticker("❤️‍🩹");
+
+    createSticker("💔");
+
+
+    /*
+        Automatically close popup
+        after music starts.
+    */
+
+    setTimeout(
+        closePopup,
+        4000
+    );
+}
+
+
+/* =========================
+   STICKER CREATOR
+========================= */
+
+function createSticker(symbol) {
+
+    const sticker =
+        document.createElement(
+            "div"
+        );
+
+    sticker.className =
+        "sticker";
+
+    sticker.textContent =
+        symbol;
+
+
+    /*
+        Random position
+    */
+
+    sticker.style.left =
+        Math.random() * 90 + "vw";
+
+    sticker.style.top =
+        Math.random() * 80 + "vh";
+
+
+    /*
+        Random movement
+    */
+
+    sticker.style.setProperty(
+        "--x",
+        ((Math.random() - .5) * 180)
+        + "px"
+    );
+
+    sticker.style.setProperty(
+        "--y",
+        ((Math.random() - .5) * 150)
+        + "px"
+    );
+
+
+    sticker.style.setProperty(
+        "--rotation",
+        ((Math.random() - .5) * 60)
+        + "deg"
+    );
+
+
+    document.body.appendChild(
+        sticker
+    );
+
+
+    setTimeout(() => {
+
+        sticker.remove();
+
+    }, 1800);
+}
+
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closePopup() {
+
+    popup.classList.remove(
+        "show"
+    );
+
+    overlay.classList.remove(
+        "show"
+    );
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        const key =
+            event.key;
+
+
+        if (
+            "0123456789.+-*/%".includes(
+                key
+            )
+        ) {
+
+            press(key);
+
+        }
+
+
+        else if (
+            key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            calculate();
+
+        }
+
+
+        else if (
+            key === "Backspace"
+        ) {
+
+            deleteLast();
+
+        }
+
+
+        else if (
+            key === "Escape"
+        ) {
+
+            clearCalc();
+
+            closePopup();
+
+        }
+
+    }
+);
+
+
+/* Click outside popup */
+
+overlay.addEventListener(
+    "click",
+    closePopup
+);
+
+</script>
+
+</body>
+</html>
+```
