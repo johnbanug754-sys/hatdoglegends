@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official-style landing page for the Municipality of Opol, Misamis Oriental.">
+    <title>Municipality of Opol | Official Landing Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="container topbar-content">
+            <span>Republic of the Philippines</span>
+            <span>Province of Misamis Oriental</span>
+        </div>
+    </div>
+
+    <header class="header" id="home">
+        <div class="container nav-container">
+            <a class="brand" href="#home">
+                <div class="brand-seal">
+                    <span>O</span>
+                </div>
+                <div class="brand-text">
+                    <strong>MUNICIPALITY OF OPOL</strong>
+                    <small>Misamis Oriental, Philippines</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navigation" id="navigation">
+                <a class="nav-link active" href="#home">Home</a>
+                <a class="nav-link" href="#about">About Opol</a>
+                <a class="nav-link" href="#services">Services</a>
+                <a class="nav-link" href="#gallery">Explore Opol</a>
+                <a class="nav-link" href="#news">Updates</a>
+                <a class="nav-link nav-cta" href="#contact">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content reveal">
+                <span class="eyebrow light-eyebrow">WELCOME TO THE MUNICIPALITY OF OPOL</span>
+                <h1>A Coastal Community.<br><span>A Brighter Future.</span></h1>
+                <p>
+                    Discover the beauty, culture, people, and opportunities
+                    of Opol, Misamis Oriental.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">Discover Opol <span>→</span></a>
+                    <a href="#services" class="btn btn-outline">Government Services</a>
+                </div>
+
+                <div class="hero-note">
+                    <span class="note-line"></span>
+                    <span>PROVINCE OF MISAMIS ORIENTAL</span>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
+                <span>↓</span>
+            </a>
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="welcome-section section-padding" id="about">
+            <div class="container welcome-grid">
+                <div class="welcome-copy reveal">
+                    <span class="eyebrow">GET TO KNOW OPOL</span>
+                    <h2>Where Community<br>Meets Opportunity</h2>
+                    <p>
+                        Opol is a coastal municipality in Misamis Oriental,
+                        located near Cagayan de Oro City. Its coastal scenery,
+                        local communities, and growing development make it an
+                        important part of Northern Mindanao.
+                    </p>
+                    <p>
+                        This website concept brings together information about
+                        the municipality, public services, local attractions,
+                        and community updates in one accessible place.
+                    </p>
+                    <a href="#gallery" class="text-link">Explore the beauty of Opol <span>↗</span></a>
+                </div>
+
+                <div class="welcome-visual reveal">
+                    <img
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Opol%2C_Misamis_Oriental_waterfront.JPG"
+                        alt="Waterfront scenery in Opol, Misamis Oriental"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85';"
+                    >
+                    <div class="visual-caption">
+                        <span class="caption-icon">⌖</span>
+                        <div>
+                            <strong>Opol, Misamis Oriental</strong>
+                            <small>Coastal beauty of Northern Mindanao</small>
+                        </div>
+                    </div>
+                    <div class="visual-decoration"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services-section section-padding" id="services">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="eyebrow">PUBLIC SERVICE</span>
+                        <h2>Government Services</h2>
+                        <p>Find the information you need and learn where to begin.</p>
+                    </div>
+                    <a href="#contact" class="text-link">Need assistance? <span>→</span></a>
+                </div>
+
+                <div class="service-search reveal">
+                    <span class="search-icon">⌕</span>
+                    <input
+                        type="search"
+                        id="serviceSearch"
+                        placeholder="Search for a service..."
+                        aria-label="Search government services"
+                    >
+                    <span class="search-hint">Search services</span>
+                </div>
+
+                <div class="services-grid" id="servicesGrid">
+                    <article class="service-card reveal" data-search="civil registry birth marriage death certificate">
+                        <div class="service-icon">▤</div>
+                        <span class="service-number">01</span>
+                        <h3>Civil Registry</h3>
+                        <p>Information about birth, marriage, death registration, and civil registry documents.</p>
+                        <a href="#contact" class="card-link">Learn more <span>→</span></a>
+                    </article>
+
+                    <article class="service-card reveal" data-search="business permit license business registration">
+                        <div class="service-icon">▣</div>
+                        <span class="service-number">02</span>
+                        <h3>Business Permits</h3>
+                        <p>Guidance for business registration, permits, renewals, and related requirements.</p>
+                        <a href="#contact" class="card-link">Learn more <span>→</span></a>
+                    </article>
+
+                    <article class="service-card reveal" data-search="health medical clinic public health">
+                        <div class="service-icon">✚</div>
+                        <span class="service-number">03</span>
+                        <h3>Health Services</h3>
+                        <p>Find information about municipal health services and community health programs.</p>
+                        <a href="#contact" class="card-link">Learn more <span>→</span></a>
+                    </article>
+
+                    <article class="service-card reveal" data-search="social welfare assistance family senior citizen">
+                        <div class="service-icon">♡</div>
+                        <span class="service-number">04</span>
+                        <h3>Social Welfare</h3>
+                        <p>Learn about social welfare programs and possible assistance for qualified residents.</p>
+                        <a href="#contact" class="card-link">Learn more <span>→</span></a>
+                    </article>
+
+                    <article class="service-card reveal" data-search="agriculture farmers crops fisheries livelihood">
+                        <div class="service-icon">♧</div>
+                        <span class="service-number">05</span>
+                        <h3>Agriculture</h3>
+                        <p>Information about agricultural programs, farmers, and local livelihood support.</p>
+                        <a href="#contact" class="card-link">Learn more <span>→</span></a>
+                    </article>
+
+                    <article class="service-card reveal" data-search="environment waste collection disaster preparedness">
+                        <div class="service-icon">♻</div>
+                        <span class="service-number">06</span>
+                        <h3>Environment & Safety</h3>
+                        <p>Explore environmental initiatives, community preparedness, and public safety information.</p>
+                        <a href="#contact" class="card-link">Learn more <span>→</span></a>
+                    </article>
+                </div>
+
+                <p class="no-results" id="noResults" hidden>No matching services found. Try another keyword.</p>
+                <p class="service-disclaimer">
+                    This is a demonstration website. Please confirm current requirements,
+                    schedules, and availability with the relevant municipal office.
+                </p>
+            </div>
+        </section>
+
+        <!-- LOCAL HIGHLIGHTS -->
+        <section class="highlights-section">
+            <div class="container highlights-grid">
+                <div class="highlight-intro reveal">
+                    <span class="eyebrow light-eyebrow">WHY VISIT OPOL?</span>
+                    <h2>Experience the<br>Charm of the Coast</h2>
+                    <p>
+                        From coastal views to local community life, explore
+                        some of the places and experiences associated with Opol.
+                    </p>
+                    <a href="#gallery" class="btn btn-light">View Photo Gallery <span>→</span></a>
+                </div>
+
+                <div class="highlight-item reveal">
+                    <div class="highlight-number">01</div>
+                    <div>
+                        <h3>Coastal Scenery</h3>
+                        <p>Enjoy views of the coastline along Macajalar Bay.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item reveal">
+                    <div class="highlight-number">02</div>
+                    <div>
+                        <h3>Local Community</h3>
+                        <p>Discover the everyday life, culture, and people of Opol.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item reveal">
+                    <div class="highlight-number">03</div>
+                    <div>
+                        <h3>Nature & Recreation</h3>
+                        <p>Explore coastal destinations and nearby natural attractions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO GALLERY -->
+        <section class="gallery-section section-padding" id="gallery">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="eyebrow">A CLOSER LOOK</span>
+                        <h2>Discover Opol</h2>
+                        <p>A visual glimpse of the municipality and its coastal surroundings.</p>
+                    </div>
+                    <span class="gallery-label">OPOL, MISAMIS ORIENTAL</span>
+                </div>
+
+                <div class="gallery-grid">
+                    <a
+                        class="gallery-card gallery-large reveal"
+                        href="https://commons.wikimedia.org/wiki/File:Taboc_Beach_(Opol_Beach),_Opol,_Misamis_Oriental,_Philippines_02.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Taboc_Beach_%28Opol_Beach%29%2C_Opol%2C_Misamis_Oriental%2C_Philippines_02.jpg"
+                            alt="Taboc Beach in Opol"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85';"
+                        >
+                        <div class="gallery-overlay">
+                            <span>COASTAL DESTINATION</span>
+                            <h3>Taboc Beach</h3>
+                            <span class="gallery-arrow">↗</span>
+                        </div>
+                    </a>
+
+                    <a
+                        class="gallery-card reveal"
+                        href="https://commons.wikimedia.org/wiki/File:Opol,_Misamis_Oriental_waterfront.JPG"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Opol%2C_Misamis_Oriental_waterfront.JPG"
+                            alt="Opol waterfront"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=85';"
+                        >
+                        <div class="gallery-overlay">
+                            <span>COASTAL VIEWS</span>
+                            <h3>Opol Waterfront</h3>
+                            <span class="gallery-arrow">↗</span>
+                        </div>
+                    </a>
+
+                    <a
+                        class="gallery-card reveal"
+                        href="https://commons.wikimedia.org/wiki/Category:Opol"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Brgy._Luyong_Bonbon%2C_Opol_public_market_at_night.jpg"
+                            alt="Public market at night in Opol"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85';"
+                        >
+                        <div class="gallery-overlay">
+                            <span>LOCAL COMMUNITY</span>
+                            <h3>Opol at Night</h3>
+                            <span class="gallery-arrow">↗</span>
+                        </div>
+                    </a>
+                </div>
+
+                <p class="photo-credit">
+                    Photos are loaded from Wikimedia Commons where available.
+                    Click a photo to view its source and check the individual license
+                    and attribution requirements before public or commercial use.
+                </p>
+            </div>
+        </section>
+
+        <!-- COMMUNITY MESSAGE -->
+        <section class="community-section">
+            <div class="community-image">
+                <img
+                    src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1800&q=85"
+                    alt="Green landscape and nature"
+                    loading="lazy"
+                >
+            </div>
+            <div class="community-content reveal">
+                <span class="eyebrow light-eyebrow">BUILDING TOGETHER</span>
+                <h2>A Stronger Community Starts With Us.</h2>
+                <p>
+                    Progress begins with people working together. Stay informed,
+                    participate in community activities, and help make Opol a
+                    better place for future generations.
+                </p>
+                <a href="#contact" class="btn btn-primary">Connect With Us <span>→</span></a>
+            </div>
+        </section>
+
+        <!-- NEWS AND UPDATES -->
+        <section class="news-section section-padding" id="news">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="eyebrow">STAY INFORMED</span>
+                        <h2>News & Updates</h2>
+                        <p>Find official announcements and municipal information.</p>
+                    </div>
+                    <a
+                        href="https://opolmisor.gov.ph/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-link"
+                    >Visit Municipal Website <span>↗</span></a>
+                </div>
+
+                <div class="news-grid">
+                    <article class="news-card reveal">
+                        <a href="https://opolmisor.gov.ph/" target="_blank" rel="noopener noreferrer" class="news-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=85"
+                                alt="Government building"
+                                loading="lazy"
+                            >
+                            <span class="news-tag">OFFICIAL INFORMATION</span>
+                        </a>
+                        <div class="news-body">
+                            <span class="news-category">Municipal Government</span>
+                            <h3>Official Municipal Information</h3>
+                            <p>Visit the municipal website for official information and published announcements.</p>
+                            <a href="https://opolmisor.gov.ph/" target="_blank" rel="noopener noreferrer" class="card-link">Visit website <span>↗</span></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card reveal">
+                        <a href="https://opolmisor.gov.ph/development/tourism/" target="_blank" rel="noopener noreferrer" class="news-image">
+                            <img
+                                src="https://commons.wikimedia.org/wiki/Special:FilePath/Taboc_Beach_%28Opol_Beach%29%2C_Opol%2C_Misamis_Oriental%2C_Philippines_02.jpg"
+                                alt="Coastal attraction"
+                                loading="lazy"
+                                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85';"
+                            >
+                            <span class="news-tag">TOURISM</span>
+                        </a>
+                        <div class="news-body">
+                            <span class="news-category">Explore Opol</span>
+                            <h3>Discover Local Attractions</h3>
+                            <p>Learn more about the municipality's tourist attractions through its tourism page.</p>
+                            <a href="https://opolmisor.gov.ph/development/tourism/" target="_blank" rel="noopener noreferrer" class="card-link">Explore tourism <span>↗</span></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card reveal">
+                        <a href="https://opolmisor.gov.ph/" target="_blank" rel="noopener noreferrer" class="news-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85"
+                                alt="People working together in a community"
+                                loading="lazy"
+                            >
+                            <span class="news-tag">COMMUNITY</span>
+                        </a>
+                        <div class="news-body">
+                            <span class="news-category">Community Updates</span>
+                            <h3>Stay Connected With Opol</h3>
+                            <p>Check official municipal channels for current public notices and community updates.</p>
+                            <a href="https://opolmisor.gov.ph/" target="_blank" rel="noopener noreferrer" class="card-link">View official site <span>↗</span></a>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="service-disclaimer">
+                    The cards above link to official information pages. They are not
+                    live news feeds, and no publication dates are implied.
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section section-padding" id="contact">
+            <div class="container contact-grid">
+                <div class="contact-copy reveal">
+                    <span class="eyebrow light-eyebrow">GET IN TOUCH</span>
+                    <h2>How Can We<br>Help You?</h2>
+                    <p>
+                        For official inquiries, public services, and current contact
+                        details, please use the municipality's official website.
+                    </p>
+
+                    <div class="contact-detail">
+                        <span class="contact-symbol">⌖</span>
+                        <div>
+                            <strong>Location</strong>
+                            <p>Municipality of Opol, Misamis Oriental, Philippines</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="contact-symbol">↗</span>
+                        <div>
+                            <strong>Official Website</strong>
+                            <p><a href="https://opolmisor.gov.ph/" target="_blank" rel="noopener noreferrer">opolmisor.gov.ph</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-panel reveal">
+                    <span class="panel-label">OFFICIAL RESOURCE</span>
+                    <h3>Connect With the Municipal Government</h3>
+                    <p>
+                        Find verified announcements, municipal information,
+                        and available contact details from the official website.
+                    </p>
+                    <a
+                        href="https://opolmisor.gov.ph/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-primary full-btn"
+                    >Open Official Website <span>↗</span></a>
+                    <p class="panel-note">
+                        This landing page is a website concept and is not an official
+                        municipal government portal.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-main">
+            <a class="brand footer-brand" href="#home">
+                <div class="brand-seal footer-seal"><span>O</span></div>
+                <div class="brand-text">
+                    <strong>MUNICIPALITY OF OPOL</strong>
+                    <small>Misamis Oriental, Philippines</small>
+                </div>
+            </a>
+
+            <p>Celebrating community, culture, and coastal beauty.</p>
+
+            <a href="#home" class="back-top">Back to top ↑</a>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© <span id="currentYear"></span> Municipality of Opol Website Concept</span>
+            <span>Designed for community information and accessibility</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
